@@ -1,4 +1,4 @@
-# Visual Image/Text Search (CLIP + FAISS + Streamlit)
+# Image/Text Search (CLIP + FAISS + Streamlit)
 
 Upload a folder of images, build a FAISS index with CLIP embeddings, and search by image or text.
 
