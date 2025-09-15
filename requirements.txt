@@ -1,0 +1,14 @@
+
+streamlit
+faiss-cpu
+Pillow
+numpy
+tqdm
+sentence-transformers
+pymongo[srv]==3.12
+torch==2.8.0+cpu
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+
+
+
