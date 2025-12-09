@@ -60,21 +60,21 @@ def load_index():
 
 def main():
     st.sidebar.image("https://cdn-icons-png.flaticon.com/512/751/751463.png", width=60)
-    st.sidebar.title("⚙️ Controls")
+    st.sidebar.title("Controls")
 
-    if st.sidebar.button("📦 Start"):
+    if st.sidebar.button("Start"):
         build_index()
-        st.sidebar.success("Done✅")
+        st.sidebar.success("Done")
 
     index, paths = load_index()
     if index is None:
         st.info("Mount Folder !!!")
         return
 
-    tab1, tab2 = st.tabs(["📝 Text Query", "🖼 Image Query"])
+    tab1, tab2 = st.tabs([" Text Query", " Image Query"])
 
     with tab1:
-        st.subheader("🔎 Search by Text")
+        st.subheader(" Search by Text")
         q = st.text_input("Type something (e.g., *red car*, *cat on sofa*):")
         k = st.slider("Results to show", 1, 30, 10, key="k_text")
         if st.button("Search", key="btn_text"):
@@ -82,7 +82,7 @@ def main():
             q_emb = q_emb / np.linalg.norm(q_emb)
             D, I = index.search(np.expand_dims(q_emb, 0), k)
 
-            st.markdown("### 📊 Results")
+            st.markdown("###  Results")
             cols = st.columns(5)
             for rank, idx in enumerate(I[0]):
                 with cols[rank % 5]:
@@ -90,7 +90,7 @@ def main():
                     st.caption(f"#{rank+1} • score={float(D[0][rank]):.3f}")
 
     with tab2:
-        st.subheader("🖼 Search by Image")
+        st.subheader(" Search by Image")
         up = st.file_uploader("Upload an image", type=["jpg","jpeg","png","webp"])
         k2 = st.slider("Results to show", 1, 30, 10, key="k_img")
         if up and st.button("Search", key="btn_img"):
@@ -100,7 +100,7 @@ def main():
             q_emb = q_emb / np.linalg.norm(q_emb)
             D, I = index.search(np.expand_dims(q_emb, 0), k2)
 
-            st.markdown("### 📊 Results")
+            st.markdown("###  Results")
             cols = st.columns(5)
             for rank, idx in enumerate(I[0]):
                 with cols[rank % 5]:
